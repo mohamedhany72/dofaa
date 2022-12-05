@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هتعدي يا دفعة</title>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-align: center;
+            background: #f5f6fa;
+            font-size: 150%;
+        }
+        .inputs{
+            display: none;
+        }
+        .results{
+            padding: 50px 30px;
+        }
+        h1{
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
+            margin-bottom: 50px;
+        }
+        .passed, .remained{
+            margin-bottom: 25px;
+        }
+        .passed{
+            color: #0652DD;
+        }
+        .remained{
+            color: #c23616;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="inputs">
+            <form>
+                <div>
+                    <input type="number" id="from">
+                    <label for="from">دخلت امتى</label>
+                </div>
+
+                <div>
+                    <input type="number" id="to">
+                    <label for="to">هتخلص امتى</label>
+                </div>
+
+                <input type="submit" value="احسب يا كحول">
+            </form>
+        </div>
+
+        <div class="results">
+            <h1>هتعدي يا دفعة</h1>
+            <div class="passed" id="passed"></div>
+
+            <div class="remained" id="remained"></div>
+
+            <div class="progress-bar">
+                <label for="progress" id="progress-label"></label>
+                <progress id="progress" value="32" max="100"></progress>
+            </div>
+        </div>
+    </section>
+    <script>
+        const converter = 1000 * 60 * 60 * 24;
+        
+        const firstDate = new Date("10/13/2022");
+        const lastDate = new Date("12/01/2023");
+        const nowDate = Date.now();
+
+        const passed = (nowDate - firstDate) / converter;
+        const daysPassed = Math.ceil(passed)
+
+        const remained = (lastDate - nowDate) / converter;
+        const daysRemained = Math.floor(remained);
+
+        const totalDays = (lastDate - firstDate) / converter;
+        const percent = Math.round((passed/totalDays) * 100);
+        // console.log(`passed: ${passed}; 
+        // total: ${totalDays};
+        // passed/total = ${passed/totalDays}; 
+        // passedDays = ${daysPassed}; 
+        // passedDays/total = ${daysPassed/totalDays}
+        // `)
+        // manipulating the dom
+        const passedDiv = document.getElementById("passed");
+        const remainedDiv = document.getElementById("remained");
+
+        passedDiv.innerHTML = `<strong>${daysPassed}</strong> عدى من جيشك`;
+        remainedDiv.innerHTML = `<strong>${daysRemained}</strong> فاضل فى جيشك`;
+
+        const progressLabel = document.getElementById("progress-label");
+        const progressBar = document.getElementById("progress");
+        progressBar.value = percent;
+
+        let message = "";
+        percent < 25
+        ?message = "جيشك حلبة ياسطا"
+        : percent <= 50
+        ? message = "يا عسكري يا كحول"
+        : percent <= 75
+        ? message = "هانت ياسطا و تردف" 
+        : message = "ولع الدووونيا يا رديف"
+
+
+        progressLabel.innerText = `${percent}% \n ${message} \n`
+    </script>
+</body>
+</html>
