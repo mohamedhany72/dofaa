@@ -92,7 +92,9 @@
         const passedDiv = document.getElementById("passed");
         const remainedDiv = document.getElementById("remained");
 
-        passedDiv.innerHTML = `<div>مدة مركز التدريب 49 يوم <div> <div> <strong>${daysPassed}</strong> عدى من جيشك </div>`;
+        passedDiv.innerHTML = `<div>مدة مركز التدريب 49 يوم </div> 
+<div> <strong>${daysPassed}</strong> عدى من جيشك </div>
+<div>إجمالى عدد الايام ${49 + daysPassed}</div>`;
         remainedDiv.innerHTML = `<strong>${daysRemained}</strong> فاضل فى جيشك`;
 
         const progressLabel = document.getElementById("progress-label");
