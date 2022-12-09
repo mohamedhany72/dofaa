@@ -70,7 +70,7 @@
     <script>
         const converter = 1000 * 60 * 60 * 24;
         
-        const firstDate = new Date("10/13/2022");
+        const firstDate = new Date("12/01/2022");
         const lastDate = new Date("12/01/2023");
         const nowDate = Date.now();
 
@@ -92,7 +92,7 @@
         const passedDiv = document.getElementById("passed");
         const remainedDiv = document.getElementById("remained");
 
-        passedDiv.innerHTML = `<strong>${daysPassed}</strong> عدى من جيشك`;
+        passedDiv.innerHTML = `مدة مركز التدريب 49 يوم \n <strong>${daysPassed}</strong> عدى من جيشك`;
         remainedDiv.innerHTML = `<strong>${daysRemained}</strong> فاضل فى جيشك`;
 
         const progressLabel = document.getElementById("progress-label");
